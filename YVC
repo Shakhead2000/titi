@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>האצלת סמכויות — חשבות מחוז הצפון</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;600;700&family=Heebo:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#001c3a",
+                        "inverse-on-surface": "#eef1f5",
+                        "surface-dim": "#d7dade",
+                        "tertiary": "#1e262d",
+                        "tertiary-fixed-dim": "#bfc7d0",
+                        "surface-container-lowest": "#ffffff",
+                        "surface": "#f7fafe",
+                        "on-primary-container": "#89a5dd",
+                        "secondary-fixed-dim": "#a5c8ff",
+                        "on-primary-fixed": "#001a40",
+                        "on-secondary-container": "#00447f",
+                        "primary-container": "#1b3a6b",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#acc7ff",
+                        "surface-variant": "#e0e3e7",
+                        "error-container": "#ffdad6",
+                        "surface-tint": "#425e91",
+                        "on-tertiary-fixed": "#151c23",
+                        "secondary-fixed": "#d4e3ff",
+                        "outline": "#747780",
+                        "on-surface-variant": "#44474f",
+                        "surface-container-highest": "#e0e3e7",
+                        "on-secondary-fixed-variant": "#004785",
+                        "surface-container-low": "#f1f4f8",
+                        "secondary": "#205fa4",
+                        "primary": "#002452",
+                        "on-surface": "#181c1f",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#d7e2ff",
+                        "surface-bright": "#f7fafe",
+                        "surface-container-high": "#e5e8ec",
+                        "tertiary-fixed": "#dbe3ec",
+                        "error": "#ba1a1a",
+                        "on-background": "#181c1f",
+                        "on-tertiary-fixed-variant": "#40484f",
+                        "surface-container": "#ebeef2",
+                        "on-tertiary-container": "#9ea6af",
+                        "secondary-container": "#7db3fd",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#c4c6d0",
+                        "primary-fixed-dim": "#acc7ff",
+                        "on-primary-fixed-variant": "#294678",
+                        "tertiary-container": "#343c43",
+                        "on-error-container": "#93000a",
+                        "inverse-surface": "#2d3134",
+                        "background": "#f7fafe"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max-width": "1200px",
+                        "stack-md": "16px",
+                        "stack-lg": "32px",
+                        "section-padding": "60px",
+                        "stack-sm": "8px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "heebo": ["Heebo", "sans-serif"],
+                        "display-lg": ["Arimo", "sans-serif"],
+                        "headline-lg": ["Arimo", "sans-serif"],
+                        "headline-md": ["Arimo", "sans-serif"],
+                        "body-md": ["Arimo", "sans-serif"],
+                        "caption": ["Arimo", "sans-serif"],
+                        "label-md": ["Arimo", "sans-serif"],
+                        "headline-lg-mobile": ["Arimo", "sans-serif"],
+                        "body-lg": ["Arimo", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "body-md": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "caption": ["12px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "body-lg": ["20px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Arimo', sans-serif;
+            background-color: #f7fafe;
+            color: #181c1f;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .page-section {
+            display: none;
+            flex: 1;
+        }
+        .theory-card { transition: transform 0.2s ease; }
+        .theory-card:hover { transform: translateY(-4px); }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f4f8; }
+        ::-webkit-scrollbar-thumb { background: #1b3a6b; border-radius: 4px; }
+        .nav-link { transition: all 0.3s ease; cursor: pointer; }
+        .nav-link.active {
+            border-bottom: 2px solid #205fa4;
+            padding-bottom: 4px;
+            color: #ffffff;
+        }
+        .page-header-block {
+            margin-bottom: 32px;
+            border-right: 8px solid #205fa4;
+            padding-right: 24px;
+        }
+        .page-header-block h1 {
+            font-family: 'Heebo', sans-serif;
+            font-size: 48px;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            font-weight: 700;
+            color: #002452;
+            margin-bottom: 8px;
+        }
+        .page-header-block p {
+            font-family: 'Arimo', sans-serif;
+            font-size: 20px;
+            line-height: 1.6;
+            font-weight: 400;
+            color: #44474f;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface m-0 p-0 overflow-x-hidden">
+
+    <header class="bg-[#001a40] border-b-4 border-secondary sticky top-0 z-50 shadow-md">
+        <div class="flex items-center w-full px-gutter max-w-container-max-width mx-auto h-16 rtl gap-8">
+            <button onclick="showPage('home-section')" class="flex items-center gap-4 bg-transparent border-0 p-0 cursor-pointer hover:opacity-80 transition-opacity whitespace-nowrap">
+                <span class="material-symbols-outlined text-secondary-fixed text-2xl">account_balance</span>
+                <span class="text-headline-md font-headline-md text-on-primary">האצלת סמכויות — חשבות מחוז הצפון</span>
+            </button>
+            <nav class="hidden md:flex items-center gap-stack-lg mr-4" id="main-nav">
+                <a class="nav-link font-label-md text-label-md text-on-primary/80 hover:text-secondary-container" data-target="home-section" onclick="showPage('home-section')">דף בית</a>
+                <a class="nav-link font-label-md text-label-md text-on-primary/80 hover:text-secondary-container" data-target="step-a-section" onclick="showPage('step-a-section')">שלב א׳</a>
+                <a class="nav-link font-label-md text-label-md text-on-primary/80 hover:text-secondary-container" data-target="step-b-section" onclick="showPage('step-b-section')">שלב ב׳</a>
+                <a class="nav-link font-label-md text-label-md text-on-primary/80 hover:text-secondary-container" data-target="step-c-section" onclick="showPage('step-c-section')">שלב ג׳</a>
+                <a class="nav-link font-label-md text-label-md text-on-primary/80 hover:text-secondary-container" data-target="step-d-section" onclick="showPage('step-d-section')">שלב ד׳</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home-section" class="page-section">
+
+        <main>
+            <section class="bg-primary py-section-padding relative overflow-hidden" id="hero-interactive">
+                <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, #ffffff 1px, transparent 0); background-size: 40px 40px;"></div>
+                <div class="max-w-container-max-width mx-auto px-gutter rtl flex flex-col items-center md:items-start relative z-10">
+                    <h2 class="text-[52px] leading-tight font-black text-on-primary mb-2" style="font-family:'Heebo'">האצלת סמכויות</h2>
+                    <h3 class="text-headline-md text-[#A8C4E0] mb-stack-md font-light">ניתוח ארגוני ויישום תיאורטי</h3>
+                    <div class="w-32 h-[1px] bg-secondary mb-stack-md"></div>
+                    <div class="flex flex-col gap-1">
+                        <p class="text-body-md text-on-primary/90 font-medium">חשבות שכר מחוז צפון — משרד החינוך</p>
+                        <p class="text-body-md text-on-primary/80">מבוא לניהול | המרצה: פרלה עינב</p>
+                    </div>
+                    <div class="mt-stack-lg flex gap-4">
+                        <button onclick="showPage('step-a-section')" class="bg-secondary text-on-primary px-8 py-3 font-label-md rounded-none hover:bg-on-secondary-container transition-all active:opacity-90 inline-block cursor-pointer">
+                            התחלת הסקירה
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-section-padding px-gutter max-w-container-max-width mx-auto rtl">
+                <div class="bg-surface-container-low border border-outline-variant p-stack-lg rounded-lg">
+                    <div class="flex flex-wrap justify-center md:justify-between items-center gap-stack-lg text-center">
+                        <div class="flex-1 min-w-[150px]">
+                            <p class="text-label-md text-outline uppercase tracking-wider mb-2">סטודנט/ית</p>
+                            <p class="text-headline-md text-primary font-bold">טוהר תהילים</p>
+                        </div>
+                        <div class="hidden md:block w-[1px] h-12 bg-outline-variant"></div>
+                        <div class="flex-1 min-w-[150px]">
+                            <p class="text-label-md text-outline uppercase tracking-wider mb-2">סטודנט/ית</p>
+                            <p class="text-headline-md text-primary font-bold">אורי תורג'מן</p>
+                        </div>
+                        <div class="hidden md:block w-[1px] h-12 bg-outline-variant"></div>
+                        <div class="flex-1 min-w-[150px]">
+                            <p class="text-label-md text-outline uppercase tracking-wider mb-2">סטודנט/ית</p>
+                            <p class="text-headline-md text-primary font-bold">ורוניקה סבצ'קין</p>
+                        </div>
+                        <div class="hidden md:block w-[1px] h-12 bg-outline-variant"></div>
+                        <div class="flex-1 min-w-[150px]">
+                            <p class="text-label-md text-outline uppercase tracking-wider mb-2">סטודנט/ית</p>
+                            <p class="text-headline-md text-primary font-bold">סהר שימקו</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="pb-section-padding px-gutter max-w-container-max-width mx-auto rtl">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-stack-md">
+                    <div class="md:col-span-2 bg-[#EAF2FB] border border-[#C5D9F0] rounded-[10px] p-stack-lg flex flex-col justify-between interactive-card">
+                        <div>
+                            <span class="material-symbols-outlined text-secondary text-4xl mb-4">hub</span>
+                            <h4 class="text-headline-md font-headline-md text-primary mb-2">מבנה ארגוני והיררכיה</h4>
+                            <p class="text-body-md font-body-md text-on-surface-variant">ניתוח מעמיק של שרשרת הפיקוד בחטיבת השכר של מחוז הצפון. בחינת נקודות התורפה בתהליכי קבלת ההחלטות והשפעתן על יעילות העבודה היומיומית של הצוותים המקצועיים.</p>
+                        </div>
+                        <div class="mt-8 overflow-hidden rounded-lg aspect-[21/9]">
+                            <img alt="Interior of a modern corporate office" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARrYt2EoqDwnWcm7K_7BxuDB2kniouwSQSrmnOv0YbwvwHoZx-gcAI8Qc5E0y3Nzy2swjTMJrGjdy5iVXMm78kB_ZkhY4FxSpnrJ6g0q_w7A_-nQ6tmZ4x5ZRqSns1x3W0XJ9_WGz4cNOFKLD0M6Aor6eOyMta0bGpVWEjc8XpO9Ad6NwLoxBH2QqIcARri1VOpo9SMUv3PQ7srUDMazk_Nj6h4MLSlJnx_0nVgRVXkniAsheWU6WA_ckJ63Qy7cWc5eZkgDZvmng">
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-stack-md">
+                        <div class="bg-[#EAF2FB] border border-[#C5D9F0] rounded-[10px] p-stack-lg flex-1 interactive-card">
+                            <span class="material-symbols-outlined text-secondary text-3xl mb-4">assignment_ind</span>
+                            <h4 class="text-headline-md font-headline-md text-primary mb-2">תחומי אחריות</h4>
+                            <p class="text-body-md font-body-md text-on-surface-variant">מיפוי סמכויות הניהול בדרגי הביניים ודרג ראשי הצוותים.</p>
+                        </div>
+                        <div class="bg-primary text-on-primary rounded-[10px] p-stack-lg flex-1 flex flex-col justify-center">
+                            <p class="text-display-lg font-bold mb-0">94%</p>
+                            <p class="text-body-md font-body-md opacity-80">שיפור פוטנציאלי ביעילות דרך האצלה נכונה</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <section class="bg-primary-container py-section-padding w-full">
+            <div class="max-w-container-max-width mx-auto px-gutter text-center">
+                <h3 class="font-headline-lg text-headline-lg text-on-primary mb-4">סיכום דף הבית</h3>
+                <p class="font-body-lg text-body-lg max-w-3xl mx-auto text-white/90 leading-relaxed">
+                    עבודה זו בוחנת את תופעת חוסר האצלת הסמכויות בחשבות מחוז הצפון ומציעה פתרונות מבוססי תיאוריה ניהולית. עקבו אחר ארבעת השלבים לקריאה מלאה.
+                </p>
+                <div class="mt-stack-lg flex justify-center items-center max-w-3xl mx-auto">
+                    <button onclick="showPage('step-a-section')" class="bg-secondary text-white px-8 py-3 rounded-[4px] font-label-md hover:bg-secondary-container transition-all cursor-pointer">המשך לשלב א׳</button>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <section id="step-a-section" class="page-section">
+
+        <div class="bg-surface-container-low w-full py-4 border-b border-outline-variant">
+            <div class="max-w-container-max-width mx-auto px-gutter flex items-center justify-between">
+                <div class="flex items-center gap-4 w-full">
+                    <div class="flex items-center gap-2">
+                        <div class="w-10 h-10 rounded-full bg-primary text-white border-4 border-secondary-container flex items-center justify-center font-bold text-sm">א׳</div>
+                        <span class="font-label-md text-primary font-bold">שלב א׳</span>
+                    </div>
+                    <div class="h-1 flex-1 bg-outline-variant rounded"></div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-outline-variant text-on-surface-variant flex items-center justify-center font-bold text-sm">ב׳</div>
+                        <span class="hidden sm:inline font-label-md text-on-surface-variant">שלב ב׳</span>
+                    </div>
+                    <div class="h-1 flex-1 bg-outline-variant rounded"></div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-outline-variant text-on-surface-variant flex items-center justify-center font-bold text-sm">ג׳</div>
+                        <span class="hidden sm:inline font-label-md text-on-surface-variant">שלב ג׳</span>
+                    </div>
+                    <div class="h-1 flex-1 bg-outline-variant rounded"></div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-outline-variant text-on-surface-variant flex items-center justify-center font-bold text-sm">ד׳</div>
+                        <span class="hidden sm:inline font-label-md text-on-surface-variant">שלב ד׳</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <main class="max-w-container-max-width mx-auto px-gutter py-section-padding">
+            <div class="page-header-block">
+                <h1>זיהוי ואבחון הבעיה</h1>
+                <p>האצלת סמכויות — חשבות מחוז הצפון</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-section-padding">
+                <div class="bg-secondary-fixed p-stack-lg rounded-[10px] border border-outline-variant flex flex-col items-center text-center">
+                    <span class="font-display-lg text-display-lg text-primary mb-1">33,000</span>
+                    <span class="font-label-md text-label-md text-on-secondary-fixed">עובדי הוראה</span>
+                </div>
+                <div class="bg-secondary-fixed p-stack-lg rounded-[10px] border border-outline-variant flex flex-col items-center text-center">
+                    <span class="font-display-lg text-display-lg text-primary mb-1">40</span>
+                    <span class="font-label-md text-label-md text-on-secondary-fixed">חשבי שכר בכירים</span>
+                </div>
+                <div class="bg-secondary-fixed p-stack-lg rounded-[10px] border border-outline-variant flex flex-col items-center text-center">
+                    <span class="font-display-lg text-display-lg text-primary mb-1">6</span>
+                    <span class="font-label-md text-label-md text-on-secondary-fixed">ראשי צוותים</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+                <div class="bg-[#EAF2FB] p-stack-lg rounded-[10px] border border-[#C5D9F0] flex flex-col gap-4 interactive-card">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary text-3xl">account_balance</span>
+                        <h2 class="font-headline-md text-headline-md text-primary">תיאור הארגון</h2>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface leading-relaxed">
+                        מחלקת חשבות שכר במחוז צפון של משרד החינוך מהווה את העורק הכלכלי המרכזי למערכת החינוך האזורית. המחלקה אמונה על ניהול תקציבי עתק ודיוק מרבי בחישוב שכרם של עשרות אלפי עובדים, תחת רגולציה קפדנית ולוחות זמנים דוחקים.
+                    </p>
+                </div>
+                <div class="bg-[#EAF2FB] p-stack-lg rounded-[10px] border border-[#C5D9F0] flex flex-col gap-4 interactive-card">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-error text-3xl">warning</span>
+                        <h2 class="font-headline-md text-headline-md text-primary">הבעיה המרכזית</h2>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface leading-relaxed">
+                        ראשי הצוותים אינם מאצילים סמכויות באופן אפקטיבי. חוסר האמון ביכולות המקצועיות של חשבי השכר מוביל לריכוזיות יתר, צווארי בקבוק ניהוליים ושחיקה מהירה של דרג הביניים המקצועי שאינו זוכה לאוטונומיה.
+                    </p>
+                </div>
+                <div class="bg-[#EAF2FB] p-stack-lg rounded-[10px] border border-[#C5D9F0] flex flex-col gap-4 interactive-card">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary text-3xl">groups</span>
+                        <h2 class="font-headline-md text-headline-md text-primary">מי מושפע?</h2>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface leading-relaxed">
+                        חשבי השכר אינם מקבלים משימות מאתגרות ומתפתחים מקצועית בקצב איטי מדי. במקביל, ראשי הצוותים קורסים תחת עומס משימות תפעוליות פשוטות במקום להתמקד בבקרה אסטרטגית ובשיפור תהליכים מחלקתיים.
+                    </p>
+                </div>
+                <div class="bg-[#EAF2FB] p-stack-lg rounded-[10px] border border-[#C5D9F0] flex flex-col gap-4 interactive-card">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary text-3xl">history</span>
+                        <h2 class="font-headline-md text-headline-md text-primary">ניסיונות פתרון בעבר</h2>
+                    </div>
+                    <ul class="list-disc list-inside font-body-md text-body-md text-on-surface leading-relaxed flex flex-col gap-2">
+                        <li>שימוש בשיח ישיר וקיום ישיבות צוות ייעודיות לנושא.</li>
+                        <li>ניסיונות לרוטציה בין תחומי אחריות שונים בתוך המחלקה.</li>
+                        <li>הגדרת יעדי האצלה כחלק מהערכות העובדים השנתיות.</li>
+                    </ul>
+                </div>
+            </div>
+        </main>
+
+        <section class="bg-primary-container text-on-primary py-section-padding w-full mt-section-padding">
+            <div class="max-w-container-max-width mx-auto px-gutter text-center">
+                <h3 class="font-headline-lg text-headline-lg mb-4">סיכום האבחון</h3>
+                <p class="font-body-lg text-body-lg max-w-3xl mx-auto opacity-90">
+                    הבעיה אינה טכנית — היא ניהולית במהותה. ראשי הצוותים מנהלים מתוך חוסר ביטחון, וכתוצאה מכך כל המערכת סובלת מירידה בפריון ופגיעה במוטיבציה הארגונית.
+                </p>
+                <div class="mt-stack-lg flex justify-between items-center max-w-3xl mx-auto">
+                    <button onclick="showPage('home-section')" class="border border-white text-white px-8 py-3 rounded-[4px] font-label-md hover:bg-white/10 transition-all cursor-pointer">חזרה לדף הבית</button>
+                    <button onclick="showPage('step-b-section')" class="bg-secondary text-white px-8 py-3 rounded-[4px] font-label-md hover:bg-secondary-container transition-all cursor-pointer">המשך לשלב ב׳</button>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <section id="step-b-section" class="page-section">
+
+        <div class="bg-surface-container-low w-full py-4 border-b border-outline-variant">
+            <div class="max-w-container-max-width mx-auto px-gutter flex items-center justify-between">
+                <div class="flex items-center gap-4 w-full">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center font-bold text-sm">✓</div>
+                        <span class="hidden sm:inline font-label-md text-secondary">שלב א׳</span>
+                    </div>
+                    <div class="h-1 flex-1 bg-secondary rounded"></div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-10 h-10 rounded-full bg-primary text-white border-4 border-secondary-container flex items-center justify-center font-bold text-sm">ב׳</div>
+                        <span class="font-label-md text-primary font-bold">שלב ב׳</span>
+                    </div>
+                    <div class="h-1 flex-1 bg-outline-variant rounded"></div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-outline-variant text-on-surface-variant flex items-center justify-center font-bold text-sm">ג׳</div>
+                        <span class="hidden sm:inline font-label-md text-on-surface-variant">שלב ג׳</span>
+                    </div>
+                    <div class="h-1 flex-1 bg-outline-variant rounded"></div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-outline-variant text-on-surface-variant flex items-center justify-center font-bold text-sm">ד׳</div>
+                        <span class="hidden sm:inline font-label-md text-on-surface-variant">שלב ד׳</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <main class="max-w-container-max-width mx-auto px-gutter py-section-padding">
+            <div class="page-header-block">
+                <h1>בחינת שתי תיאוריות</h1>
+                <p>האצלת סמכויות — חשבות מחוז הצפון</p>
+            </div>
+
+            <div class="flex items-center gap-stack-sm mb-stack-lg">
+                <span class="material-symbols-outlined text-secondary text-3xl">menu_book</span>
+                <h2 class="font-headline-md text-headline-md text-primary">שתי תיאוריות רלוונטיות</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg mb-section-padding">
+                <div class="theory-card bg-[#EAF2FB] border border-[#C5D9F0] rounded-[10px] p-stack-lg flex flex-col gap-6">
+                    <div class="border-b border-[#C5D9F0] pb-4">
+                        <h3 class="font-headline-md text-headline-md text-primary-container">תיאוריה X ותיאוריה Y — מקגרגור</h3>
+                    </div>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-label-md text-primary mb-1 flex items-center gap-2"><span class="material-symbols-outlined text-sm">star</span> עקרונות מרכזיים</h4>
+                            <p class="font-body-md text-body-md">חלוקת הגישה הניהולית לשתי קצוות: X (שליטה ופיקוח) מול Y (אמון והכוונה עצמית). התיאוריה מתמקדת באופן בו תפיסת המנהל את עובדיו מעצבת את התנהגותו.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-label-md text-primary mb-1 flex items-center gap-2"><span class="material-symbols-outlined text-sm">lightbulb</span> הנחות יסוד</h4>
+                            <p class="font-body-md text-body-md">תיאוריה X מניחה שהעובד עצלן מטבעו וזקוק לכפייה. תיאוריה Y מניחה שהעובד רואה בעבודה צורך טבעי ושואף לאחריות בתנאים המתאימים.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-label-md text-primary mb-1 flex items-center gap-2"><span class="material-symbols-outlined text-sm">psychology</span> כיצד מפרשת את הבעיה</h4>
+                            <p class="font-body-md text-body-md">חוסר האצלת הסמכויות בחשבות נובע מקיבעון על תיאוריה X. המנהל אינו מאמין ביכולתם של עובדי המטה לבצע משימות ללא פיקוח הדוק.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-label-md text-primary mb-1 flex items-center gap-2"><span class="material-symbols-outlined text-sm">build</span> סוגי פתרונות</h4>
+                            <p class="font-body-md text-body-md">שינוי פרדיגמה ניהולית לעבר תיאוריה Y: יצירת סביבה המאפשרת לעובדים להפגין יוזמה, תוך מתן אוטונומיה מבוקרת בשלבים.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="theory-card bg-[#EAF2FB] border border-[#C5D9F0] rounded-[10px] p-stack-lg flex flex-col gap-6">
+                    <div class="border-b border-[#C5D9F0] pb-4">
+                        <h3 class="font-headline-md text-headline-md text-primary-container">מודל מחזור החיים — הרסי ובלנשארד</h3>
+                    </div>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-label-md text-primary mb-1 flex items-center gap-2"><span class="material-symbols-outlined text-sm">star</span> עקרונות מרכזיים</h4>
+                            <p class="font-body-md text-body-md">מנהיגות סיטואציונית המבוססת על רמת ה"בשלות" של המונהג. המנהל חייב להתאים את סגנונו (הנחיה, אימון, תמיכה, האצלה) למוכנות העובד.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-label-md text-primary mb-1 flex items-center gap-2"><span class="material-symbols-outlined text-sm">lightbulb</span> הנחות יסוד</h4>
+                            <p class="font-body-md text-body-md">אין סגנון ניהול אחד נכון. האפקטיביות תלויה בשילוב בין התמקדות במשימה להתמקדות ביחסים, בהתאם לכישורי העובד וביטחונו העצמי.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-label-md text-primary mb-1 flex items-center gap-2"><span class="material-symbols-outlined text-sm">psychology</span> כיצד מפרשת את הבעיה</h4>
+                            <p class="font-body-md text-body-md">חוסר התאמה בין רמת הבשלות הגבוהה של עובדי המטה (M4) לבין סגנון הניהול המנחה מדי של המנהל (S1/S2), המונע האצלה נדרשת.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-label-md text-primary mb-1 flex items-center gap-2"><span class="material-symbols-outlined text-sm">build</span> סוגי פתרונות</h4>
+                            <p class="font-body-md text-body-md">מעבר הדרגתי לסגנון "האצלה" (S4). זיהוי רמת הבשלות של כל עובד ומתן סמכויות בהתאם, תוך הפחתת הפיקוח הישיר.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="mb-section-padding">
+                <h2 class="font-headline-md text-headline-md text-primary mb-stack-md">השוואה תיאורטית</h2>
+                <div class="overflow-hidden border border-outline-variant rounded-lg">
+                    <table class="w-full text-right border-collapse">
+                        <thead>
+                            <tr class="bg-primary text-on-primary">
+                                <th class="p-4 font-headline-md border-l border-on-primary/20">נושא</th>
+                                <th class="p-4 font-headline-md border-l border-on-primary/20">הרסי ובלנשארד</th>
+                                <th class="p-4 font-headline-md">מקגרגור</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white">
+                            <tr class="border-b border-outline-variant hover:bg-surface-container-lowest transition-colors interactive-row">
+                                <td class="p-4 font-label-md text-primary border-l border-outline-variant">במה שונות</td>
+                                <td class="p-4 font-body-md">דינמית - משתנה לפי העובד והסיטואציה</td>
+                                <td class="p-4 font-body-md">תפיסתית - מבוססת על אמונות היסוד של המנהל</td>
+                            </tr>
+                            <tr class="bg-surface-container border-b border-outline-variant hover:bg-surface-container-low transition-colors interactive-row">
+                                <td class="p-4 font-label-md text-primary border-l border-outline-variant">הנחות יסוד</td>
+                                <td class="p-4 font-body-md">בשלות מקצועית ופסיכולוגית קובעת הצלחה</td>
+                                <td class="p-4 font-body-md">טבע האדם (עצלנות מול שאיפה למימוש)</td>
+                            </tr>
+                            <tr class="border-b border-outline-variant hover:bg-surface-container-lowest transition-colors interactive-row">
+                                <td class="p-4 font-label-md text-primary border-l border-outline-variant">סיכון בחירה לא מתאימה</td>
+                                <td class="p-4 font-body-md">תסכול העובד או חוסר ביצוע עקב חוסר הכוונה</td>
+                                <td class="p-4 font-body-md">דיכוי יצירתיות או אובדן שליטה ארגונית</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="mb-section-padding relative h-[400px] rounded-xl overflow-hidden group">
+                <img alt="Collaboration and Leadership" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQjvLgDUfm9qb8jhWKbnU2FzEzhW2vqnZIJUWk2Jp0i4NZwZJHQtPm2eYJdT2n9CWHAf4_OAtSZSPShtoPyJI12N0dWYruu54R2g-9PPmQy3lfP9Gc00SYFjZwvA2xT8RogwTcAZH3f1W80H0qC5IBuQaDDMFeb_G3S-5ukHnQwUb7VRBrSLIjtoIUtrCq7SgC7TC6B3Ql7yF1jD8luqD6mcGanPRNfl2g_ZQHBo5JjajEDoVOzaEXNMaWKKdrTkaFrbtL1_pL5Tw">
+                <div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex items-end p-stack-lg">
+                    <p class="text-white font-headline-md">שילוב תיאוריות מאפשר מבט רחב על אתגרי הניהול בחשבות</p>
+                </div>
+            </section>
+        </main>
+
+        <section class="bg-primary-container py-section-padding text-center">
+            <div class="max-w-container-max-width mx-auto px-gutter">
+                <h2 class="font-headline-lg text-headline-lg text-on-primary mb-stack-md">סיכום שלב ב׳</h2>
+                <p class="text-white/90 font-body-lg max-w-3xl mx-auto leading-relaxed">
+                    ניתוח התיאוריות מעלה כי הבעיה בחשבות מחוז הצפון אינה חוסר יכולת של העובדים, אלא צורך בשינוי תפיסתי של הדרג הניהולי. אימוץ גישת "האצלה" (S4) ומעבר לתפיסת עולם Y יאפשרו צמיחה ארגונית ושיפור משמעותי בשביעות רצון עובדי המטה.
+                </p>
+                <div class="mt-stack-lg flex justify-between items-center max-w-3xl mx-auto">
+                    <button onclick="showPage('step-a-section')" class="border border-white text-white px-8 py-3 rounded-[4px] font-label-md hover:bg-white/10 transition-all cursor-pointer">חזרה לשלב א׳</button>
+                    <button onclick="showPage('step-c-section')" class="bg-secondary text-white px-8 py-3 rounded-[4px] font-label-md hover:bg-secondary-container transition-all cursor-pointer">המשך לשלב ג׳</button>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <section id="step-c-section" class="page-section">
+
+        <div class="bg-surface-container-low w-full py-4 border-b border-outline-variant">
+            <div class="max-w-container-max-width mx-auto px-gutter flex items-center justify-between">
+                <div class="flex items-center gap-4 w-full">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center font-bold text-sm">✓</div>
+                        <span class="hidden sm:inline font-label-md text-secondary">שלב א׳</span>
+                    </div>
+                    <div class="h-1 flex-1 bg-secondary rounded"></div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center font-bold text-sm">✓</div>
+                        <span class="hidden sm:inline font-label-md text-secondary">שלב ב׳</span>
+                    </div>
+                    <div class="h-1 flex-1 bg-secondary rounded"></div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-10 h-10 rounded-full bg-primary text-white border-4 border-secondary-container flex items-center justify-center font-bold text-sm">ג׳</div>
+                        <span class="font-label-md text-primary font-bold">שלב ג׳</span>
+                    </div>
+                    <div class="h-1 flex-1 bg-outline-variant rounded"></div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-outline-variant text-on-surface-variant flex items-center justify-center font-bold text-sm">ד׳</div>
+                        <span class="hidden sm:inline font-label-md text-on-surface-variant">שלב ד׳</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <main class="max-w-container-max-width mx-auto px-gutter py-section-padding">
+            <div class="page-header-block">
+                <h1>הצדקת הבחירה התאורטית</h1>
+                <p>האצלת סמכויות — חשבות מחוז הצפון</p>
+            </div>
+
+            <div class="bg-secondary-fixed/30 border-2 border-primary-container p-stack-lg rounded-xl text-center mb-16">
+                <h4 class="text-headline-lg font-headline-lg text-primary mb-2" style="font-family:'Heebo'">מודל מחזור החיים של הרסי ובלנשארד</h4>
+                <p class="text-body-md font-body-md text-on-secondary-fixed-variant">הבחירה מנומקת ומבוססת על אופי הבעיה והקשר הארגוני של חשבות המחוז</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <div class="bg-[#EAF2FB] border border-[#C5D9F0] p-stack-lg rounded-[10px] transition-transform hover:scale-[1.02] duration-300">
+                    <div class="bg-primary-container text-on-primary w-12 h-12 rounded-lg flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined">track_changes</span>
+                    </div>
+                    <h5 class="text-headline-md font-headline-md text-primary mb-4">מדוע מתאימה לבעיה?</h5>
+                    <p class="text-body-md font-body-md text-on-surface leading-relaxed">
+                        המודל מאפשר התאמה דינמית של סגנון הניהול לרמת המוכנות של עובדי המחוז. במציאות של האצלת סמכויות מורכבת, הגמישות הניהולית הכרחית כדי להבטיח ביצועים מיטביים תוך שמירה על פיקוח הדוק היכן שנדרש.
+                    </p>
+                </div>
+                <div class="bg-[#EAF2FB] border border-[#C5D9F0] p-stack-lg rounded-[10px] transition-transform hover:scale-[1.02] duration-300">
+                    <div class="bg-secondary text-on-secondary w-12 h-12 rounded-lg flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span>
+                    </div>
+                    <h5 class="text-headline-md font-headline-md text-primary mb-4">יתרון יחסי</h5>
+                    <p class="text-body-md font-body-md text-on-surface leading-relaxed">
+                        בניגוד למודלים סטטיים, המודל של הרסי ובלנשארד מתמקד בקשר שבין משימה למערכות יחסים. יתרונו הגדול בחשבות המחוז הוא היכולת לייצר "שפה משותפת" בין מנהלי אגפים לכפיפים, מה שמפחית חיכוכים בתהליכי קבלת החלטות.
+                    </p>
+                </div>
+                <div class="bg-[#EAF2FB] border border-[#C5D9F0] p-stack-lg rounded-[10px] transition-transform hover:scale-[1.02] duration-300">
+                    <div class="bg-error text-on-error w-12 h-12 rounded-lg flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">warning</span>
+                    </div>
+                    <h5 class="text-headline-md font-headline-md text-primary mb-4">מגבלות התיאוריה</h5>
+                    <p class="text-body-md font-body-md text-on-surface leading-relaxed">
+                        חשוב להכיר בכך שהמודל נשען על הערכה סובייקטיבית של המנהל לגבי בשלות העובד. קיימת סכנה של תיוג שגוי או חוסר עקביות ביישום, במיוחד בארגון היררכי קשיח כמו משרד ממשלתי.
+                    </p>
+                </div>
+            </div>
+
+            <div class="w-full aspect-[21/9] bg-surface-container rounded-xl overflow-hidden mb-16 border border-outline-variant relative">
+                <div class="absolute inset-0 bg-gradient-to-l from-primary/10 to-transparent"></div>
+                <img alt="Academic Discussion Context" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9doegN_vjQrmsO55GWxRoh5B4y13EZzm0T5jt7HgYbXoTmpxccdyjcdDIDah4txP4B5zkHl4LyhrHtD-8Ih6SW4AC3X6tK7l4B8I8T-_pUl6LCzLUuvRQqWyGE9zbYoTR4q00238Vid925O0W_eKGbcLTO3tgipzsU5VvENCG_9tbH6I2oxzvP6I1wVL0i0ZOmqbYDMoGe9MA7paQ3N0WuYwfC7fmKTC0DWnPC4NMXLLL91ju3SmhukKq-XbxLZhD0beVKh4BNmg">
+                <div class="absolute bottom-8 right-8 max-w-md">
+                    <p class="text-primary font-bold text-lg bg-on-primary/90 p-4 rounded-lg shadow-sm border-r-4 border-secondary">
+                        "ניהול אפקטיבי הוא תולדה של התאמת המסגרת התאורטית למציאות האנושית בשטח."
+                    </p>
+                </div>
+            </div>
+        </main>
+
+        <section class="bg-primary-container text-on-primary py-section-padding w-full">
+            <div class="max-w-container-max-width mx-auto px-gutter text-center">
+                <h4 class="font-headline-lg text-headline-lg mb-4">סיכום הבחירה</h4>
+                <p class="font-body-lg max-w-3xl mx-auto text-on-primary/90 leading-relaxed">
+                    לאור הניתוח המעמיק של מחוז הצפון, מודל הרסי ובלנשארד נמצא כמתאים ביותר לגישור על פערי הסמכויות. השלב הבא יתמקד בבניית תוכנית אופרטיבית ליישום המודל במחלקות השונות.
+                </p>
+                <div class="mt-stack-lg flex justify-between items-center max-w-3xl mx-auto">
+                    <button onclick="showPage('step-b-section')" class="border border-white text-white px-8 py-3 rounded-[4px] font-label-md hover:bg-white/10 transition-all cursor-pointer">חזרה לשלב ב׳</button>
+                    <button onclick="showPage('step-d-section')" class="bg-secondary text-white px-8 py-3 rounded-[4px] font-label-md hover:bg-secondary-container transition-all cursor-pointer">המשך לשלב ד׳</button>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <section id="step-d-section" class="page-section">
+
+        <div class="bg-surface-container-low w-full py-4 border-b border-outline-variant">
+            <div class="max-w-container-max-width mx-auto px-gutter flex items-center justify-between">
+                <div class="flex items-center gap-4 w-full">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center font-bold text-sm">✓</div>
+                        <span class="hidden sm:inline font-label-md text-secondary">שלב א׳</span>
+                    </div>
+                    <div class="h-1 flex-1 bg-secondary rounded"></div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center font-bold text-sm">✓</div>
+                        <span class="hidden sm:inline font-label-md text-secondary">שלב ב׳</span>
+                    </div>
+                    <div class="h-1 flex-1 bg-secondary rounded"></div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center font-bold text-sm">✓</div>
+                        <span class="hidden sm:inline font-label-md text-secondary">שלב ג׳</span>
+                    </div>
+                    <div class="h-1 flex-1 bg-secondary rounded"></div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-10 h-10 rounded-full bg-primary text-white border-4 border-secondary-container flex items-center justify-center font-bold text-sm">ד׳</div>
+                        <span class="font-label-md text-primary font-bold">שלב ד׳</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <main class="max-w-container-max-width mx-auto px-gutter py-section-padding">
+            <div class="page-header-block">
+                <h1>שימוש ב-AI בתהליך</h1>
+                <p>האצלת סמכויות — חשבות מחוז הצפון</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+                <div class="bg-[#EAF2FB] border border-[#C5D9F0] rounded-[10px] p-stack-lg flex flex-col gap-4 interactive-card">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+                        <h3 class="font-headline-md text-headline-md text-primary">באילו שלבים נעשה שימוש</h3>
+                    </div>
+                    <ul class="flex flex-col gap-3 font-body-md text-body-md text-on-surface">
+                        <li class="flex items-start gap-2"><span class="text-secondary mt-1.5">•</span><span>ניסוח הבעיה הארגונית והגדרת מטרות המחקר.</span></li>
+                        <li class="flex items-start gap-2"><span class="text-secondary mt-1.5">•</span><span>השוואת תיאוריות ניהוליות והאצלת סמכויות.</span></li>
+                        <li class="flex items-start gap-2"><span class="text-secondary mt-1.5">•</span><span>כתיבת ניתוח אנליטי מבוסס נתונים ארגוניים.</span></li>
+                        <li class="flex items-start gap-2"><span class="text-secondary mt-1.5">•</span><span>בניית ארכיטקטורת האתר והצגת המידע.</span></li>
+                    </ul>
+                </div>
+                <div class="bg-[#EAF2FB] border border-[#C5D9F0] rounded-[10px] p-stack-lg flex flex-col gap-4 interactive-card">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+                        <h3 class="font-headline-md text-headline-md text-primary">כיצד AI סייע</h3>
+                    </div>
+                    <ul class="flex flex-col gap-3 font-body-md text-body-md text-on-surface">
+                        <li class="flex items-start gap-2"><span class="text-secondary mt-1.5">•</span><span>הצעת מבנה לוגי סדור וקוהרנטי לכל שלבי העבודה.</span></li>
+                        <li class="flex items-start gap-2"><span class="text-secondary mt-1.5">•</span><span>ניסוח אקדמי רהוט המותאם לסטנדרטים מקצועיים.</span></li>
+                        <li class="flex items-start gap-2"><span class="text-secondary mt-1.5">•</span><span>זיהוי קשרים סמויים בין תיאוריות שונות למציאות בשטח.</span></li>
+                    </ul>
+                </div>
+                <div class="bg-[#EAF2FB] border border-[#C5D9F0] rounded-[10px] p-stack-lg flex flex-col gap-4 interactive-card">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">search_off</span>
+                        <h3 class="font-headline-md text-headline-md text-primary">מגבלות וטעויות שזוהו</h3>
+                    </div>
+                    <ul class="flex flex-col gap-3 font-body-md text-body-md text-on-surface">
+                        <li class="flex items-start gap-2"><span class="text-secondary mt-1.5">•</span><span>נטייה לניסוח "גבוה" מדי שאינו תמיד מתאים לשיח הארגוני.</span></li>
+                        <li class="flex items-start gap-2"><span class="text-secondary mt-1.5">•</span><span>חוסר היכרות מעמיקה עם המבנה הספציפי של משרד החינוך.</span></li>
+                        <li class="flex items-start gap-2"><span class="text-secondary mt-1.5">•</span><span>צורך בהתאמות רבות של ההקשר הישראלי-בירוקרטי.</span></li>
+                    </ul>
+                </div>
+                <div class="bg-[#EAF2FB] border border-[#C5D9F0] rounded-[10px] p-stack-lg flex flex-col gap-4 interactive-card">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+                        <h3 class="font-headline-md text-headline-md text-primary">בקרה אנושית</h3>
+                    </div>
+                    <ul class="flex flex-col gap-3 font-body-md text-body-md text-on-surface">
+                        <li class="flex items-start gap-2"><span class="text-secondary mt-1.5">•</span><span>כל פסקה נבדקה ידנית, תוקנה ועובדה מחדש.</span></li>
+                        <li class="flex items-start gap-2"><span class="text-secondary mt-1.5">•</span><span>הסרת תוכן שלא תאם את המציאות הדינמית בשטח המחוז.</span></li>
+                        <li class="flex items-start gap-2"><span class="text-secondary mt-1.5">•</span><span>העמדת הניסוחים מול ניסיון אישי רב שנים בתפקיד.</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="my-section-padding">
+                <img alt="שיתוף פעולה אדם ומכונה" class="w-full h-auto rounded-[10px] object-cover max-h-[300px]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-rl2S_p4xYZCrlPtkZ7FNUFTV_4oQNu9xRjrcrmhFeFGfKj7qhPL2iQiQ_Y1phmvm03s7IG-PidtDFGlWBbHK8YRimfpYVmpPUAXLkAHFAY0eAyPaLMQSD2YohwOUTLXgWeCQlx80wGo3a3vJUBHV7GwsEH1wPavOlHE32K4rodDWLM0y-bGV-YwJIESyzG5deG4PUtj_o7HXnihC41JQQItPA905xh7_79VMJftX2bChvheDBAowdgPncPIRnmDUcASWpvd0c5Y">
+            </div>
+
+            <section class="w-full bg-primary py-section-padding rounded-xl">
+                <div class="max-w-container-max-width mx-auto px-gutter text-center">
+                    <div class="flex flex-col items-center gap-6">
+                        <span class="material-symbols-outlined text-secondary text-5xl">fact_check</span>
+                        <p class="font-headline-md text-headline-md text-on-primary max-w-4xl leading-relaxed">
+                            "השימוש ב-AI שימש ככלי עבודה תומך חשיבה — לא כתחליף לה. כל תוצר עבר בקרה ביקורתית לפני השימוש."
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <section class="bg-primary-container text-on-primary py-section-padding w-full mt-section-padding">
+            <div class="max-w-container-max-width mx-auto px-gutter text-center">
+                <h3 class="font-headline-lg text-headline-lg mb-4">סיכום שלב ד׳</h3>
+                <p class="font-body-lg text-body-lg max-w-3xl mx-auto opacity-90">
+                    השימוש ב-AI בעבודה זו היה מושכל ומבוקר. הכלי שימש כתמיכה אינטלקטואלית, כאשר כל שלב עבר בחינה ביקורתית ועיבוד אנושי לפני השימוש הסופי בתוצרים.
+                </p>
+                <div class="mt-stack-lg flex justify-start items-center max-w-3xl mx-auto">
+                    <button onclick="showPage('step-c-section')" class="border border-white text-white px-8 py-3 rounded-[4px] font-label-md hover:bg-white/10 transition-all cursor-pointer">חזרה לשלב ג׳</button>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <footer class="bg-primary border-t border-secondary mt-auto">
+        <div class="w-full py-section-padding px-gutter flex flex-col md:flex-row justify-between items-center max-w-container-max-width mx-auto rtl gap-8 text-on-primary font-body-md">
+            <div class="text-center md:text-right">
+                © פרויקט גמר במבוא לניהול 2026 | עמק יזרעאל | כל הזכויות שמורות
+            </div>
+            <div class="text-center md:text-left">
+                עבודתם של טוהר, אורי, ורוניקה וסהר
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page-section').forEach(page => {
+                page.style.display = 'none';
+            });
+            document.getElementById(pageId).style.display = 'block';
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active', 'border-b-2', 'border-secondary', 'pb-1');
+                link.classList.add('text-on-primary/80');
+                if (link.dataset.target === pageId) {
+                    link.classList.add('active', 'border-b-2', 'border-secondary', 'pb-1');
+                    link.classList.remove('text-on-primary/80');
+                }
+            });
+
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            showPage('home-section');
+
+            const heroSection = document.getElementById('hero-interactive');
+            if (heroSection) {
+                heroSection.addEventListener('mousemove', (e) => {
+                    const x = (e.clientX / window.innerWidth) * 10;
+                    const y = (e.clientY / window.innerHeight) * 10;
+                    heroSection.style.backgroundPosition = `${x}px ${y}px`;
+                });
+            }
+
+            document.querySelectorAll('.interactive-card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.classList.add('border-primary');
+                    card.style.transform = 'translateY(-4px) scale(1.01)';
+                    card.style.boxShadow = '0 10px 25px -5px rgba(0, 0, 0, 0.1)';
+                    card.style.transition = 'all 0.3s ease';
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.classList.remove('border-primary');
+                    card.style.transform = 'translateY(0) scale(1)';
+                    card.style.boxShadow = 'none';
+                });
+            });
+
+            document.querySelectorAll('.interactive-row').forEach(row => {
+                row.addEventListener('mouseenter', () => {
+                    row.style.transform = 'scale(1.005)';
+                    row.style.transition = 'transform 0.2s';
+                });
+                row.addEventListener('mouseleave', () => {
+                    row.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
