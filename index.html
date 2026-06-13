@@ -151,6 +151,57 @@
             font-weight: 400;
             color: #44474f;
         }
+
+        /* ── הערכה: סרגל דירוג ── */
+        .rating-group { display: flex; gap: 8px; flex-wrap: wrap; }
+        .rating-btn {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            border: 2px solid #c4c6d0;
+            background: #fff;
+            font-family: 'Arimo', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #44474f;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .rating-btn:hover { border-color: #205fa4; color: #205fa4; background: #d4e3ff; }
+        .rating-btn.selected { background: #002452; border-color: #002452; color: #fff; }
+
+        /* ── תוצאה ── */
+        .maturity-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 6px 18px; border-radius: 999px;
+            font-family: 'Arimo', sans-serif;
+            font-weight: 700; font-size: 14px;
+            letter-spacing: 0.03em;
+        }
+        .result-card { transition: all 0.4s ease; }
+
+        /* ── שדה שם ── */
+        .name-input {
+            font-family: 'Arimo', sans-serif;
+            font-size: 18px;
+            border: 2px solid #c4c6d0;
+            border-radius: 6px;
+            padding: 10px 16px;
+            width: 100%;
+            background: #fff;
+            color: #181c1f;
+            transition: border-color 0.2s;
+        }
+        .name-input:focus { outline: none; border-color: #205fa4; }
+
+        /* ── Progress bar בדף הערכה ── */
+        #eval-progress-bar {
+            height: 6px;
+            background: #205fa4;
+            border-radius: 3px;
+            transition: width 0.4s ease;
+            width: 0%;
+        }
     </style>
 </head>
 <body class="bg-background text-on-surface m-0 p-0 overflow-x-hidden">
@@ -167,12 +218,15 @@
                 <a class="nav-link font-label-md text-label-md text-on-primary/80 hover:text-secondary-container" data-target="step-b-section" onclick="showPage('step-b-section')">שלב ב׳</a>
                 <a class="nav-link font-label-md text-label-md text-on-primary/80 hover:text-secondary-container" data-target="step-c-section" onclick="showPage('step-c-section')">שלב ג׳</a>
                 <a class="nav-link font-label-md text-label-md text-on-primary/80 hover:text-secondary-container" data-target="step-d-section" onclick="showPage('step-d-section')">שלב ד׳</a>
+                <a class="nav-link font-label-md text-label-md text-on-primary/80 hover:text-secondary-container" data-target="eval-section" onclick="showPage('eval-section')">הערכה לחשב</a>
             </nav>
         </div>
     </header>
 
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- דף הבית -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
     <section id="home-section" class="page-section">
-
         <main>
             <section class="bg-primary py-section-padding relative overflow-hidden" id="hero-interactive">
                 <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, #ffffff 1px, transparent 0); background-size: 40px 40px;"></div>
@@ -187,6 +241,9 @@
                     <div class="mt-stack-lg flex gap-4">
                         <button onclick="showPage('step-a-section')" class="bg-secondary text-on-primary px-8 py-3 font-label-md rounded-none hover:bg-on-secondary-container transition-all active:opacity-90 inline-block cursor-pointer">
                             התחלת הסקירה
+                        </button>
+                        <button onclick="showPage('eval-section')" class="border border-secondary-fixed text-secondary-fixed px-8 py-3 font-label-md rounded-none hover:bg-white/10 transition-all cursor-pointer">
+                            הערכה לחשב
                         </button>
                     </div>
                 </div>
@@ -258,8 +315,10 @@
         </section>
     </section>
 
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- שלב א -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
     <section id="step-a-section" class="page-section">
-
         <div class="bg-surface-container-low w-full py-4 border-b border-outline-variant">
             <div class="max-w-container-max-width mx-auto px-gutter flex items-center justify-between">
                 <div class="flex items-center gap-4 w-full">
@@ -313,27 +372,21 @@
                         <span class="material-symbols-outlined text-primary text-3xl">account_balance</span>
                         <h2 class="font-headline-md text-headline-md text-primary">תיאור הארגון</h2>
                     </div>
-                    <p class="font-body-md text-body-md text-on-surface leading-relaxed">
-                        מחלקת חשבות שכר במחוז צפון של משרד החינוך מהווה את העורק הכלכלי המרכזי למערכת החינוך האזורית. המחלקה אמונה על ניהול תקציבי עתק ודיוק מרבי בחישוב שכרם של עשרות אלפי עובדים, תחת רגולציה קפדנית ולוחות זמנים דוחקים.
-                    </p>
+                    <p class="font-body-md text-body-md text-on-surface leading-relaxed">מחלקת חשבות שכר במחוז צפון של משרד החינוך מהווה את העורק הכלכלי המרכזי למערכת החינוך האזורית. המחלקה אמונה על ניהול תקציבי עתק ודיוק מרבי בחישוב שכרם של עשרות אלפי עובדים, תחת רגולציה קפדנית ולוחות זמנים דוחקים.</p>
                 </div>
                 <div class="bg-[#EAF2FB] p-stack-lg rounded-[10px] border border-[#C5D9F0] flex flex-col gap-4 interactive-card">
                     <div class="flex items-center gap-3">
                         <span class="material-symbols-outlined text-error text-3xl">warning</span>
                         <h2 class="font-headline-md text-headline-md text-primary">הבעיה המרכזית</h2>
                     </div>
-                    <p class="font-body-md text-body-md text-on-surface leading-relaxed">
-                        ראשי הצוותים אינם מאצילים סמכויות באופן אפקטיבי. חוסר האמון ביכולות המקצועיות של חשבי השכר מוביל לריכוזיות יתר, צווארי בקבוק ניהוליים ושחיקה מהירה של דרג הביניים המקצועי שאינו זוכה לאוטונומיה.
-                    </p>
+                    <p class="font-body-md text-body-md text-on-surface leading-relaxed">ראשי הצוותים אינם מאצילים סמכויות באופן אפקטיבי. חוסר האמון ביכולות המקצועיות של חשבי השכר מוביל לריכוזיות יתר, צווארי בקבוק ניהוליים ושחיקה מהירה של דרג הביניים המקצועי שאינו זוכה לאוטונומיה.</p>
                 </div>
                 <div class="bg-[#EAF2FB] p-stack-lg rounded-[10px] border border-[#C5D9F0] flex flex-col gap-4 interactive-card">
                     <div class="flex items-center gap-3">
                         <span class="material-symbols-outlined text-primary text-3xl">groups</span>
                         <h2 class="font-headline-md text-headline-md text-primary">מי מושפע?</h2>
                     </div>
-                    <p class="font-body-md text-body-md text-on-surface leading-relaxed">
-                        חשבי השכר אינם מקבלים משימות מאתגרות ומתפתחים מקצועית בקצב איטי מדי. במקביל, ראשי הצוותים קורסים תחת עומס משימות תפעוליות פשוטות במקום להתמקד בבקרה אסטרטגית ובשיפור תהליכים מחלקתיים.
-                    </p>
+                    <p class="font-body-md text-body-md text-on-surface leading-relaxed">חשבי השכר אינם מקבלים משימות מאתגרות ומתפתחים מקצועית בקצב איטי מדי. במקביל, ראשי הצוותים קורסים תחת עומס משימות תפעוליות פשוטות במקום להתמקד בבקרה אסטרטגית ובשיפור תהליכים מחלקתיים.</p>
                 </div>
                 <div class="bg-[#EAF2FB] p-stack-lg rounded-[10px] border border-[#C5D9F0] flex flex-col gap-4 interactive-card">
                     <div class="flex items-center gap-3">
@@ -352,9 +405,7 @@
         <section class="bg-primary-container text-on-primary py-section-padding w-full mt-section-padding">
             <div class="max-w-container-max-width mx-auto px-gutter text-center">
                 <h3 class="font-headline-lg text-headline-lg mb-4">סיכום האבחון</h3>
-                <p class="font-body-lg text-body-lg max-w-3xl mx-auto opacity-90">
-                    הבעיה אינה טכנית — היא ניהולית במהותה. ראשי הצוותים מנהלים מתוך חוסר ביטחון, וכתוצאה מכך כל המערכת סובלת מירידה בפריון ופגיעה במוטיבציה הארגונית.
-                </p>
+                <p class="font-body-lg text-body-lg max-w-3xl mx-auto opacity-90">הבעיה אינה טכנית — היא ניהולית במהותה. ראשי הצוותים מנהלים מתוך חוסר ביטחון, וכתוצאה מכך כל המערכת סובלת מירידה בפריון ופגיעה במוטיבציה הארגונית.</p>
                 <div class="mt-stack-lg flex justify-between items-center max-w-3xl mx-auto">
                     <button onclick="showPage('home-section')" class="border border-white text-white px-8 py-3 rounded-[4px] font-label-md hover:bg-white/10 transition-all cursor-pointer">חזרה לדף הבית</button>
                     <button onclick="showPage('step-b-section')" class="bg-secondary text-white px-8 py-3 rounded-[4px] font-label-md hover:bg-secondary-container transition-all cursor-pointer">המשך לשלב ב׳</button>
@@ -363,8 +414,10 @@
         </section>
     </section>
 
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- שלב ב -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
     <section id="step-b-section" class="page-section">
-
         <div class="bg-surface-container-low w-full py-4 border-b border-outline-variant">
             <div class="max-w-container-max-width mx-auto px-gutter flex items-center justify-between">
                 <div class="flex items-center gap-4 w-full">
@@ -495,9 +548,7 @@
         <section class="bg-primary-container py-section-padding text-center">
             <div class="max-w-container-max-width mx-auto px-gutter">
                 <h2 class="font-headline-lg text-headline-lg text-on-primary mb-stack-md">סיכום שלב ב׳</h2>
-                <p class="text-white/90 font-body-lg max-w-3xl mx-auto leading-relaxed">
-                    ניתוח התיאוריות מעלה כי הבעיה בחשבות מחוז הצפון אינה חוסר יכולת של העובדים, אלא צורך בשינוי תפיסתי של הדרג הניהולי. אימוץ גישת "האצלה" (S4) ומעבר לתפיסת עולם Y יאפשרו צמיחה ארגונית ושיפור משמעותי בשביעות רצון עובדי המטה.
-                </p>
+                <p class="text-white/90 font-body-lg max-w-3xl mx-auto leading-relaxed">ניתוח התיאוריות מעלה כי הבעיה בחשבות מחוז הצפון אינה חוסר יכולת של העובדים, אלא צורך בשינוי תפיסתי של הדרג הניהולי. אימוץ גישת "האצלה" (S4) ומעבר לתפיסת עולם Y יאפשרו צמיחה ארגונית ושיפור משמעותי בשביעות רצון עובדי המטה.</p>
                 <div class="mt-stack-lg flex justify-between items-center max-w-3xl mx-auto">
                     <button onclick="showPage('step-a-section')" class="border border-white text-white px-8 py-3 rounded-[4px] font-label-md hover:bg-white/10 transition-all cursor-pointer">חזרה לשלב א׳</button>
                     <button onclick="showPage('step-c-section')" class="bg-secondary text-white px-8 py-3 rounded-[4px] font-label-md hover:bg-secondary-container transition-all cursor-pointer">המשך לשלב ג׳</button>
@@ -506,8 +557,10 @@
         </section>
     </section>
 
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- שלב ג -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
     <section id="step-c-section" class="page-section">
-
         <div class="bg-surface-container-low w-full py-4 border-b border-outline-variant">
             <div class="max-w-container-max-width mx-auto px-gutter flex items-center justify-between">
                 <div class="flex items-center gap-4 w-full">
@@ -551,27 +604,21 @@
                         <span class="material-symbols-outlined">track_changes</span>
                     </div>
                     <h5 class="text-headline-md font-headline-md text-primary mb-4">מדוע מתאימה לבעיה?</h5>
-                    <p class="text-body-md font-body-md text-on-surface leading-relaxed">
-                        המודל מאפשר התאמה דינמית של סגנון הניהול לרמת המוכנות של עובדי המחוז. במציאות של האצלת סמכויות מורכבת, הגמישות הניהולית הכרחית כדי להבטיח ביצועים מיטביים תוך שמירה על פיקוח הדוק היכן שנדרש.
-                    </p>
+                    <p class="text-body-md font-body-md text-on-surface leading-relaxed">המודל מאפשר התאמה דינמית של סגנון הניהול לרמת המוכנות של עובדי המחוז. במציאות של האצלת סמכויות מורכבת, הגמישות הניהולית הכרחית כדי להבטיח ביצועים מיטביים תוך שמירה על פיקוח הדוק היכן שנדרש.</p>
                 </div>
                 <div class="bg-[#EAF2FB] border border-[#C5D9F0] p-stack-lg rounded-[10px] transition-transform hover:scale-[1.02] duration-300">
                     <div class="bg-secondary text-on-secondary w-12 h-12 rounded-lg flex items-center justify-center mb-6">
                         <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span>
                     </div>
                     <h5 class="text-headline-md font-headline-md text-primary mb-4">יתרון יחסי</h5>
-                    <p class="text-body-md font-body-md text-on-surface leading-relaxed">
-                        בניגוד למודלים סטטיים, המודל של הרסי ובלנשארד מתמקד בקשר שבין משימה למערכות יחסים. יתרונו הגדול בחשבות המחוז הוא היכולת לייצר "שפה משותפת" בין מנהלי אגפים לכפיפים, מה שמפחית חיכוכים בתהליכי קבלת החלטות.
-                    </p>
+                    <p class="text-body-md font-body-md text-on-surface leading-relaxed">בניגוד למודלים סטטיים, המודל של הרסי ובלנשארד מתמקד בקשר שבין משימה למערכות יחסים. יתרונו הגדול בחשבות המחוז הוא היכולת לייצר "שפה משותפת" בין מנהלי אגפים לכפיפים, מה שמפחית חיכוכים בתהליכי קבלת החלטות.</p>
                 </div>
                 <div class="bg-[#EAF2FB] border border-[#C5D9F0] p-stack-lg rounded-[10px] transition-transform hover:scale-[1.02] duration-300">
                     <div class="bg-error text-on-error w-12 h-12 rounded-lg flex items-center justify-center mb-6">
                         <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">warning</span>
                     </div>
                     <h5 class="text-headline-md font-headline-md text-primary mb-4">מגבלות התיאוריה</h5>
-                    <p class="text-body-md font-body-md text-on-surface leading-relaxed">
-                        חשוב להכיר בכך שהמודל נשען על הערכה סובייקטיבית של המנהל לגבי בשלות העובד. קיימת סכנה של תיוג שגוי או חוסר עקביות ביישום, במיוחד בארגון היררכי קשיח כמו משרד ממשלתי.
-                    </p>
+                    <p class="text-body-md font-body-md text-on-surface leading-relaxed">חשוב להכיר בכך שהמודל נשען על הערכה סובייקטיבית של המנהל לגבי בשלות העובד. קיימת סכנה של תיוג שגוי או חוסר עקביות ביישום, במיוחד בארגון היררכי קשיח כמו משרד ממשלתי.</p>
                 </div>
             </div>
 
@@ -579,9 +626,7 @@
                 <div class="absolute inset-0 bg-gradient-to-l from-primary/10 to-transparent"></div>
                 <img alt="Academic Discussion Context" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9doegN_vjQrmsO55GWxRoh5B4y13EZzm0T5jt7HgYbXoTmpxccdyjcdDIDah4txP4B5zkHl4LyhrHtD-8Ih6SW4AC3X6tK7l4B8I8T-_pUl6LCzLUuvRQqWyGE9zbYoTR4q00238Vid925O0W_eKGbcLTO3tgipzsU5VvENCG_9tbH6I2oxzvP6I1wVL0i0ZOmqbYDMoGe9MA7paQ3N0WuYwfC7fmKTC0DWnPC4NMXLLL91ju3SmhukKq-XbxLZhD0beVKh4BNmg">
                 <div class="absolute bottom-8 right-8 max-w-md">
-                    <p class="text-primary font-bold text-lg bg-on-primary/90 p-4 rounded-lg shadow-sm border-r-4 border-secondary">
-                        "ניהול אפקטיבי הוא תולדה של התאמת המסגרת התאורטית למציאות האנושית בשטח."
-                    </p>
+                    <p class="text-primary font-bold text-lg bg-on-primary/90 p-4 rounded-lg shadow-sm border-r-4 border-secondary">"ניהול אפקטיבי הוא תולדה של התאמת המסגרת התאורטית למציאות האנושית בשטח."</p>
                 </div>
             </div>
         </main>
@@ -589,9 +634,7 @@
         <section class="bg-primary-container text-on-primary py-section-padding w-full">
             <div class="max-w-container-max-width mx-auto px-gutter text-center">
                 <h4 class="font-headline-lg text-headline-lg mb-4">סיכום הבחירה</h4>
-                <p class="font-body-lg max-w-3xl mx-auto text-on-primary/90 leading-relaxed">
-                    לאור הניתוח המעמיק של מחוז הצפון, מודל הרסי ובלנשארד נמצא כמתאים ביותר לגישור על פערי הסמכויות. השלב הבא יתמקד בבניית תוכנית אופרטיבית ליישום המודל במחלקות השונות.
-                </p>
+                <p class="font-body-lg max-w-3xl mx-auto text-on-primary/90 leading-relaxed">לאור הניתוח המעמיק של מחוז הצפון, מודל הרסי ובלנשארד נמצא כמתאים ביותר לגישור על פערי הסמכויות. השלב הבא יתמקד בבניית תוכנית אופרטיבית ליישום המודל במחלקות השונות.</p>
                 <div class="mt-stack-lg flex justify-between items-center max-w-3xl mx-auto">
                     <button onclick="showPage('step-b-section')" class="border border-white text-white px-8 py-3 rounded-[4px] font-label-md hover:bg-white/10 transition-all cursor-pointer">חזרה לשלב ב׳</button>
                     <button onclick="showPage('step-d-section')" class="bg-secondary text-white px-8 py-3 rounded-[4px] font-label-md hover:bg-secondary-container transition-all cursor-pointer">המשך לשלב ד׳</button>
@@ -600,8 +643,10 @@
         </section>
     </section>
 
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- שלב ד -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
     <section id="step-d-section" class="page-section">
-
         <div class="bg-surface-container-low w-full py-4 border-b border-outline-variant">
             <div class="max-w-container-max-width mx-auto px-gutter flex items-center justify-between">
                 <div class="flex items-center gap-4 w-full">
@@ -641,7 +686,6 @@
                         <h3 class="font-headline-md text-headline-md text-primary">באילו שלבים נעשה שימוש</h3>
                     </div>
                     <ul class="flex flex-col gap-3 font-body-md text-body-md text-on-surface">
-                        <li class="flex items-start gap-2"><span class="text-secondary mt-1.5">•</span><span>ניסוח הבעיה הארגונית והגדרת מטרות המחקר.</span></li>
                         <li class="flex items-start gap-2"><span class="text-secondary mt-1.5">•</span><span>השוואת תיאוריות ניהוליות והאצלת סמכויות.</span></li>
                         <li class="flex items-start gap-2"><span class="text-secondary mt-1.5">•</span><span>כתיבת ניתוח אנליטי מבוסס נתונים ארגוניים.</span></li>
                         <li class="flex items-start gap-2"><span class="text-secondary mt-1.5">•</span><span>בניית ארכיטקטורת האתר והצגת המידע.</span></li>
@@ -666,7 +710,6 @@
                     <ul class="flex flex-col gap-3 font-body-md text-body-md text-on-surface">
                         <li class="flex items-start gap-2"><span class="text-secondary mt-1.5">•</span><span>נטייה לניסוח "גבוה" מדי שאינו תמיד מתאים לשיח הארגוני.</span></li>
                         <li class="flex items-start gap-2"><span class="text-secondary mt-1.5">•</span><span>חוסר היכרות מעמיקה עם המבנה הספציפי של משרד החינוך.</span></li>
-                        <li class="flex items-start gap-2"><span class="text-secondary mt-1.5">•</span><span>צורך בהתאמות רבות של ההקשר הישראלי-בירוקרטי.</span></li>
                     </ul>
                 </div>
                 <div class="bg-[#EAF2FB] border border-[#C5D9F0] rounded-[10px] p-stack-lg flex flex-col gap-4 interactive-card">
@@ -677,7 +720,6 @@
                     <ul class="flex flex-col gap-3 font-body-md text-body-md text-on-surface">
                         <li class="flex items-start gap-2"><span class="text-secondary mt-1.5">•</span><span>כל פסקה נבדקה ידנית, תוקנה ועובדה מחדש.</span></li>
                         <li class="flex items-start gap-2"><span class="text-secondary mt-1.5">•</span><span>הסרת תוכן שלא תאם את המציאות הדינמית בשטח המחוז.</span></li>
-                        <li class="flex items-start gap-2"><span class="text-secondary mt-1.5">•</span><span>העמדת הניסוחים מול ניסיון אישי רב שנים בתפקיד.</span></li>
                     </ul>
                 </div>
             </div>
@@ -690,9 +732,7 @@
                 <div class="max-w-container-max-width mx-auto px-gutter text-center">
                     <div class="flex flex-col items-center gap-6">
                         <span class="material-symbols-outlined text-secondary text-5xl">fact_check</span>
-                        <p class="font-headline-md text-headline-md text-on-primary max-w-4xl leading-relaxed">
-                            "השימוש ב-AI שימש ככלי עבודה תומך חשיבה — לא כתחליף לה. כל תוצר עבר בקרה ביקורתית לפני השימוש."
-                        </p>
+                        <p class="font-headline-md text-headline-md text-on-primary max-w-4xl leading-relaxed">"השימוש ב-AI שימש ככלי עבודה תומך חשיבה — לא כתחליף לה. כל תוצר עבר בקרה ביקורתית לפני השימוש."</p>
                     </div>
                 </div>
             </section>
@@ -701,34 +741,286 @@
         <section class="bg-primary-container text-on-primary py-section-padding w-full mt-section-padding">
             <div class="max-w-container-max-width mx-auto px-gutter text-center">
                 <h3 class="font-headline-lg text-headline-lg mb-4">סיכום שלב ד׳</h3>
-                <p class="font-body-lg text-body-lg max-w-3xl mx-auto opacity-90">
-                    השימוש ב-AI בעבודה זו היה מושכל ומבוקר. הכלי שימש כתמיכה אינטלקטואלית, כאשר כל שלב עבר בחינה ביקורתית ועיבוד אנושי לפני השימוש הסופי בתוצרים.
-                </p>
-                <div class="mt-stack-lg flex justify-start items-center max-w-3xl mx-auto">
+                <p class="font-body-lg text-body-lg max-w-3xl mx-auto opacity-90">השימוש ב-AI בעבודה זו היה מושכל ומבוקר. הכלי שימש כתמיכה אינטלקטואלית, כאשר כל שלב עבר בחינה ביקורתית ועיבוד אנושי לפני השימוש הסופי בתוצרים.</p>
+                <div class="mt-stack-lg flex justify-between items-center max-w-3xl mx-auto">
                     <button onclick="showPage('step-c-section')" class="border border-white text-white px-8 py-3 rounded-[4px] font-label-md hover:bg-white/10 transition-all cursor-pointer">חזרה לשלב ג׳</button>
+                    <button onclick="showPage('eval-section')" class="bg-secondary text-white px-8 py-3 rounded-[4px] font-label-md hover:bg-secondary-container transition-all cursor-pointer">הערכה לחשב</button>
                 </div>
             </div>
         </section>
     </section>
 
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- דף הערכה לחשב -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <section id="eval-section" class="page-section">
+
+        <main class="max-w-container-max-width mx-auto px-gutter py-section-padding">
+            <div class="page-header-block">
+                <h1>הערכה לחשב</h1>
+                <p>מיפוי רמת בשלות מקצועית לפי מודל הרסי ובלנשארד</p>
+            </div>
+
+            <!-- מד התקדמות -->
+            <div class="mb-8">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="font-label-md text-outline" id="progress-label">השלם את כל השאלות כדי לקבל תוצאה</span>
+                    <span class="font-label-md text-primary font-bold" id="progress-count">0 / 8</span>
+                </div>
+                <div class="w-full h-[6px] bg-outline-variant rounded-full overflow-hidden">
+                    <div id="eval-progress-bar"></div>
+                </div>
+            </div>
+
+            <!-- שם החשב -->
+            <div class="bg-[#EAF2FB] border border-[#C5D9F0] rounded-[10px] p-stack-lg mb-gutter">
+                <label class="font-label-md text-primary block mb-3">שם החשב המוערך</label>
+                <input class="name-input" id="employee-name" maxlength="60" placeholder="הקלד את שם העובד..." type="text">
+            </div>
+
+            <!-- שאלות -->
+            <div class="flex flex-col gap-6" id="questions-container">
+
+                <!-- ── קטגוריה א: כישורים מקצועיים ── -->
+                <div class="bg-white border border-outline-variant rounded-[10px] overflow-hidden">
+                    <div class="bg-primary px-stack-lg py-3 flex items-center gap-3">
+                        <span class="material-symbols-outlined text-secondary-fixed text-xl">workspace_premium</span>
+                        <span class="font-label-md text-on-primary">כישורים מקצועיים</span>
+                    </div>
+                    <div class="flex flex-col divide-y divide-outline-variant">
+
+                        <div class="p-stack-lg question-block" data-q="1">
+                            <p class="font-body-md text-on-surface mb-4 font-medium">1. רמת השליטה בתוכנות השכר (מערכות שכר, Excel, ממשקי אגף החשב הכללי)</p>
+                            <div class="flex flex-col gap-2">
+                                <p class="font-label-md text-outline text-sm mb-1">1 = כמעט אין שליטה &nbsp;|&nbsp; 5 = שליטה מלאה ועצמאית</p>
+                                <div class="rating-group" data-q="1">
+                                    <button class="rating-btn" data-val="1" onclick="rate(this,1,1)">1</button>
+                                    <button class="rating-btn" data-val="2" onclick="rate(this,1,2)">2</button>
+                                    <button class="rating-btn" data-val="3" onclick="rate(this,1,3)">3</button>
+                                    <button class="rating-btn" data-val="4" onclick="rate(this,1,4)">4</button>
+                                    <button class="rating-btn" data-val="5" onclick="rate(this,1,5)">5</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-stack-lg question-block" data-q="2">
+                            <p class="font-body-md text-on-surface mb-4 font-medium">2. הבנת הסכמי השכר, צווי הרחבה ורגולציית משרד החינוך הרלוונטית לתפקיד</p>
+                            <div class="flex flex-col gap-2">
+                                <p class="font-label-md text-outline text-sm mb-1">1 = הבנה בסיסית בלבד &nbsp;|&nbsp; 5 = הבנה מעמיקה ויכולת הדרכת עמיתים</p>
+                                <div class="rating-group" data-q="2">
+                                    <button class="rating-btn" data-val="1" onclick="rate(this,2,1)">1</button>
+                                    <button class="rating-btn" data-val="2" onclick="rate(this,2,2)">2</button>
+                                    <button class="rating-btn" data-val="3" onclick="rate(this,2,3)">3</button>
+                                    <button class="rating-btn" data-val="4" onclick="rate(this,2,4)">4</button>
+                                    <button class="rating-btn" data-val="5" onclick="rate(this,2,5)">5</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-stack-lg question-block" data-q="3">
+                            <p class="font-body-md text-on-surface mb-4 font-medium">3. יכולת זיהוי ותיקון עצמאי של שגיאות בחישובי שכר ללא הפנייה לראש הצוות</p>
+                            <div class="flex flex-col gap-2">
+                                <p class="font-label-md text-outline text-sm mb-1">1 = זקוק להכוונה בכל שגיאה &nbsp;|&nbsp; 5 = מזהה ופותר עצמאית באופן קבוע</p>
+                                <div class="rating-group" data-q="3">
+                                    <button class="rating-btn" data-val="1" onclick="rate(this,3,1)">1</button>
+                                    <button class="rating-btn" data-val="2" onclick="rate(this,3,2)">2</button>
+                                    <button class="rating-btn" data-val="3" onclick="rate(this,3,3)">3</button>
+                                    <button class="rating-btn" data-val="4" onclick="rate(this,3,4)">4</button>
+                                    <button class="rating-btn" data-val="5" onclick="rate(this,3,5)">5</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ── קטגוריה ב: עמידה בלוחות זמנים ואחריות ── -->
+                <div class="bg-white border border-outline-variant rounded-[10px] overflow-hidden">
+                    <div class="bg-primary px-stack-lg py-3 flex items-center gap-3">
+                        <span class="material-symbols-outlined text-secondary-fixed text-xl">schedule</span>
+                        <span class="font-label-md text-on-primary">עמידה בלוחות זמנים ואחריות</span>
+                    </div>
+                    <div class="flex flex-col divide-y divide-outline-variant">
+
+                        <div class="p-stack-lg question-block" data-q="4">
+                            <p class="font-body-md text-on-surface mb-4 font-medium">4. עמידה בעצמאות בדדליינים של עיבוד שכר חודשי ללא תזכורות מהמנהל</p>
+                            <div class="flex flex-col gap-2">
+                                <p class="font-label-md text-outline text-sm mb-1">1 = זקוק לתזכורות תדירות &nbsp;|&nbsp; 5 = תמיד עומד בזמן ומדווח יזמית</p>
+                                <div class="rating-group" data-q="4">
+                                    <button class="rating-btn" data-val="1" onclick="rate(this,4,1)">1</button>
+                                    <button class="rating-btn" data-val="2" onclick="rate(this,4,2)">2</button>
+                                    <button class="rating-btn" data-val="3" onclick="rate(this,4,3)">3</button>
+                                    <button class="rating-btn" data-val="4" onclick="rate(this,4,4)">4</button>
+                                    <button class="rating-btn" data-val="5" onclick="rate(this,4,5)">5</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-stack-lg question-block" data-q="5">
+                            <p class="font-body-md text-on-surface mb-4 font-medium">5. רמת הלקיחת אחריות אישית על תוצאות עבודתו — גם כשמשהו משתבש</p>
+                            <div class="flex flex-col gap-2">
+                                <p class="font-label-md text-outline text-sm mb-1">1 = נוטה להסיט אחריות &nbsp;|&nbsp; 5 = לוקח אחריות מלאה ומציע פתרונות</p>
+                                <div class="rating-group" data-q="5">
+                                    <button class="rating-btn" data-val="1" onclick="rate(this,5,1)">1</button>
+                                    <button class="rating-btn" data-val="2" onclick="rate(this,5,2)">2</button>
+                                    <button class="rating-btn" data-val="3" onclick="rate(this,5,3)">3</button>
+                                    <button class="rating-btn" data-val="4" onclick="rate(this,5,4)">4</button>
+                                    <button class="rating-btn" data-val="5" onclick="rate(this,5,5)">5</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ── קטגוריה ג: מוטיבציה ומוכנות פסיכולוגית ── -->
+                <div class="bg-white border border-outline-variant rounded-[10px] overflow-hidden">
+                    <div class="bg-primary px-stack-lg py-3 flex items-center gap-3">
+                        <span class="material-symbols-outlined text-secondary-fixed text-xl">psychology</span>
+                        <span class="font-label-md text-on-primary">מוטיבציה ומוכנות פסיכולוגית</span>
+                    </div>
+                    <div class="flex flex-col divide-y divide-outline-variant">
+
+                        <div class="p-stack-lg question-block" data-q="6">
+                            <p class="font-body-md text-on-surface mb-4 font-medium">6. רמת המוטיבציה לקחת על עצמו משימות מורכבות ואחריות נוספת מעבר לגרעין תפקידו</p>
+                            <div class="flex flex-col gap-2">
+                                <p class="font-label-md text-outline text-sm mb-1">1 = מעדיף להישאר בתחומו הצר &nbsp;|&nbsp; 5 = מחפש אקטיבית אתגרים נוספים</p>
+                                <div class="rating-group" data-q="6">
+                                    <button class="rating-btn" data-val="1" onclick="rate(this,6,1)">1</button>
+                                    <button class="rating-btn" data-val="2" onclick="rate(this,6,2)">2</button>
+                                    <button class="rating-btn" data-val="3" onclick="rate(this,6,3)">3</button>
+                                    <button class="rating-btn" data-val="4" onclick="rate(this,6,4)">4</button>
+                                    <button class="rating-btn" data-val="5" onclick="rate(this,6,5)">5</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="p-stack-lg question-block" data-q="7">
+                            <p class="font-body-md text-on-surface mb-4 font-medium">7. ביטחון עצמי מקצועי — נכונות להציג עמדה מקצועית גם כשהיא שונה מדעת ראש הצוות</p>
+                            <div class="flex flex-col gap-2">
+                                <p class="font-label-md text-outline text-sm mb-1">1 = אינו מביע עמדות באופן ספונטני &nbsp;|&nbsp; 5 = מעלה דעות מנומקות באופן קבוע</p>
+                                <div class="rating-group" data-q="7">
+                                    <button class="rating-btn" data-val="1" onclick="rate(this,7,1)">1</button>
+                                    <button class="rating-btn" data-val="2" onclick="rate(this,7,2)">2</button>
+                                    <button class="rating-btn" data-val="3" onclick="rate(this,7,3)">3</button>
+                                    <button class="rating-btn" data-val="4" onclick="rate(this,7,4)">4</button>
+                                    <button class="rating-btn" data-val="5" onclick="rate(this,7,5)">5</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ── קטגוריה ד: יוזמה ושיתוף פעולה ── -->
+                <div class="bg-white border border-outline-variant rounded-[10px] overflow-hidden">
+                    <div class="bg-primary px-stack-lg py-3 flex items-center gap-3">
+                        <span class="material-symbols-outlined text-secondary-fixed text-xl">groups</span>
+                        <span class="font-label-md text-on-primary">יוזמה ושיתוף פעולה</span>
+                    </div>
+                    <div class="flex flex-col divide-y divide-outline-variant">
+
+                        <div class="p-stack-lg question-block" data-q="8">
+                            <p class="font-body-md text-on-surface mb-4 font-medium">8. תרומה ליצירת תהליכי עבודה חדשים, שיפור נהלים או הדרכת עמיתים חדשים</p>
+                            <div class="flex flex-col gap-2">
+                                <p class="font-label-md text-outline text-sm mb-1">1 = אינו יוזם שינויים &nbsp;|&nbsp; 5 = מוביל שינויים ומדריך עמיתים באופן שוטף</p>
+                                <div class="rating-group" data-q="8">
+                                    <button class="rating-btn" data-val="1" onclick="rate(this,8,1)">1</button>
+                                    <button class="rating-btn" data-val="2" onclick="rate(this,8,2)">2</button>
+                                    <button class="rating-btn" data-val="3" onclick="rate(this,8,3)">3</button>
+                                    <button class="rating-btn" data-val="4" onclick="rate(this,8,4)">4</button>
+                                    <button class="rating-btn" data-val="5" onclick="rate(this,8,5)">5</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div><!-- /questions-container -->
+
+            <!-- כפתור חישוב -->
+            <div class="mt-8 flex justify-center">
+                <button id="calc-btn" onclick="calculateResult()" disabled
+                    class="bg-outline-variant text-on-surface-variant px-12 py-4 font-label-md rounded-[4px] transition-all cursor-not-allowed"
+                    style="transition: all 0.3s ease;">
+                    חישוב רמת הבשלות
+                </button>
+            </div>
+
+            <!-- תוצאה -->
+            <div id="result-area" class="hidden mt-12">
+                <div class="bg-[#EAF2FB] border-2 border-[#C5D9F0] rounded-xl p-8 result-card">
+
+                    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-8 pb-8 border-b border-[#C5D9F0]">
+                        <div>
+                            <p class="font-label-md text-outline uppercase tracking-wider mb-1">חשב מוערך</p>
+                            <p class="font-headline-lg text-headline-lg text-primary" style="font-family:'Heebo'" id="result-name">—</p>
+                        </div>
+                        <div id="maturity-badge-container"></div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                        <div class="bg-white border border-outline-variant rounded-[10px] p-6 text-center">
+                            <p class="font-label-md text-outline uppercase tracking-wider mb-2">ציון ממוצע</p>
+                            <p class="text-[48px] font-black text-primary leading-none" id="result-score">—</p>
+                            <p class="font-label-md text-outline mt-1">מתוך 5.0</p>
+                        </div>
+                        <div class="bg-white border border-outline-variant rounded-[10px] p-6 text-center">
+                            <p class="font-label-md text-outline uppercase tracking-wider mb-2">רמת בשלות</p>
+                            <p class="text-[36px] font-black text-primary leading-none" id="result-level">—</p>
+                            <p class="font-label-md text-on-surface-variant mt-1" id="result-level-name">—</p>
+                        </div>
+                        <div class="bg-white border border-outline-variant rounded-[10px] p-6 text-center">
+                            <p class="font-label-md text-outline uppercase tracking-wider mb-2">סגנון ניהול מומלץ</p>
+                            <p class="text-[36px] font-black text-primary leading-none" id="result-style">—</p>
+                            <p class="font-label-md text-on-surface-variant mt-1" id="result-style-name">—</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white border border-outline-variant rounded-[10px] p-6 mb-6">
+                        <h4 class="font-headline-md text-primary mb-3 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-secondary">info</span>
+                            פרשנות וכיווני פעולה לראש הצוות
+                        </h4>
+                        <p class="font-body-md text-on-surface leading-relaxed" id="result-description">—</p>
+                    </div>
+
+                    <div class="bg-white border border-outline-variant rounded-[10px] p-6">
+                        <h4 class="font-headline-md text-primary mb-4 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-secondary">bar_chart</span>
+                            פירוט לפי קטגוריה
+                        </h4>
+                        <div class="flex flex-col gap-4" id="category-bars"></div>
+                    </div>
+
+                    <div class="mt-6 flex gap-4 justify-end">
+                        <button onclick="resetForm()" class="border border-primary text-primary px-8 py-3 rounded-[4px] font-label-md hover:bg-secondary-fixed transition-all cursor-pointer">הערכה חדשה</button>
+                    </div>
+
+                </div>
+            </div>
+
+        </main>
+
+        <footer-spacer class="block h-16"></footer-spacer>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- Footer -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
     <footer class="bg-primary border-t border-secondary mt-auto">
         <div class="w-full py-section-padding px-gutter flex flex-col md:flex-row justify-between items-center max-w-container-max-width mx-auto rtl gap-8 text-on-primary font-body-md">
-            <div class="text-center md:text-right">
-                © פרויקט גמר במבוא לניהול 2026 | עמק יזרעאל | כל הזכויות שמורות
-            </div>
-            <div class="text-center md:text-left">
-                עבודתם של טוהר, אורי, ורוניקה וסהר
-            </div>
+            <div class="text-center md:text-right">© פרויקט גמר במבוא לניהול 2026 | עמק יזרעאל | כל הזכויות שמורות</div>
+            <div class="text-center md:text-left">עבודתם של טוהר, אורי, ורוניקה וסהר</div>
         </div>
     </footer>
 
     <script>
+        /* ── ניווט ── */
         function showPage(pageId) {
-            document.querySelectorAll('.page-section').forEach(page => {
-                page.style.display = 'none';
-            });
+            document.querySelectorAll('.page-section').forEach(p => p.style.display = 'none');
             document.getElementById(pageId).style.display = 'block';
-
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.classList.remove('active', 'border-b-2', 'border-secondary', 'pb-1');
                 link.classList.add('text-on-primary/80');
@@ -737,10 +1029,121 @@
                     link.classList.remove('text-on-primary/80');
                 }
             });
-
-            window.scrollTo({top: 0, behavior: 'smooth'});
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        /* ── מערכת ההערכה ── */
+        const answers = {};
+        const TOTAL_Q = 8;
+
+        const categories = {
+            'כישורים מקצועיים':          [1, 2, 3],
+            'עמידה בלוחות זמנים':        [4, 5],
+            'מוטיבציה ומוכנות פסיכולוגית': [6, 7],
+            'יוזמה ושיתוף פעולה':        [8]
+        };
+
+        function rate(btn, qNum, val) {
+            // נקה בחירה קודמת באותה שאלה
+            document.querySelectorAll(`.rating-group[data-q="${qNum}"] .rating-btn`).forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            answers[qNum] = val;
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const done = Object.keys(answers).length;
+            const pct = (done / TOTAL_Q) * 100;
+            document.getElementById('eval-progress-bar').style.width = pct + '%';
+            document.getElementById('progress-count').textContent = done + ' / ' + TOTAL_Q;
+
+            const calcBtn = document.getElementById('calc-btn');
+            if (done === TOTAL_Q) {
+                document.getElementById('progress-label').textContent = 'כל השאלות הושלמו — ניתן לחשב את התוצאה';
+                calcBtn.disabled = false;
+                calcBtn.className = 'bg-secondary text-white px-12 py-4 font-label-md rounded-[4px] hover:bg-on-secondary-container transition-all cursor-pointer';
+            } else {
+                document.getElementById('progress-label').textContent = 'השלם את כל השאלות כדי לקבל תוצאה';
+                calcBtn.disabled = true;
+                calcBtn.className = 'bg-outline-variant text-on-surface-variant px-12 py-4 font-label-md rounded-[4px] transition-all cursor-not-allowed';
+            }
+        }
+
+        function calculateResult() {
+            const name = document.getElementById('employee-name').value.trim() || 'לא צוין שם';
+            const total = Object.values(answers).reduce((s, v) => s + v, 0);
+            const avg = total / TOTAL_Q;
+
+            let level, levelName, style, styleName, description, badgeColor;
+
+            if (avg <= 2.0) {
+                level = 'M1'; levelName = 'מתחיל / חסר ניסיון';
+                style = 'S1'; styleName = 'הנחיה ישירה';
+                badgeColor = 'bg-error text-on-error';
+                description = 'החשב נמצא בשלב ראשוני של מוכנות מקצועית. מומלץ מאוד לנהוג בסגנון הנחיה ישירה (S1): הגדרת משימות ברורה ומפורטת, פיקוח תדיר, בדיקת תפוקות תכופה ומשוב קונסטרוקטיבי לאחר כל משימה. אין להאציל עדיין משימות עצמאיות ללא ליווי. מטרת הניהול בשלב זה: בניית ביטחון ורכישת יכולת.';
+            } else if (avg <= 3.0) {
+                level = 'M2'; levelName = 'מתפתח / מוגבל חלקית';
+                style = 'S2'; styleName = 'אימון והכוונה';
+                badgeColor = 'bg-[#e65100] text-white';
+                description = 'החשב מפגין נכונות ומוטיבציה, אך כישוריו עדיין בהתפתחות. סגנון האימון (S2) הוא המתאים ביותר: המנהל מסביר את הסיבות מאחורי משימות, שואל שאלות מכוונות, ומאפשר ביצוע עצמאי חלקי — תוך בדיקה ומתן משוב. כדאי לאפשר לחשב לטפל בנושאים פשוטים באופן עצמאי ולהגדיל בהדרגה את מרחב הפעולה.';
+            } else if (avg <= 4.0) {
+                level = 'M3'; levelName = 'מיומן / מוגבל בביטחון';
+                style = 'S3'; styleName = 'תמיכה ועידוד';
+                badgeColor = 'bg-secondary text-on-primary';
+                description = 'החשב בעל יכולת מקצועית טובה, אך נזקק לתמיכה רגשית וחיזוק ביטחון עצמי. גישת התמיכה (S3) מתאימה: ראש הצוות מפחית הנחיה ישירה, מאזין לחשב, מאשר החלטות שהוא מציע, ומעניק אוטונומיה גדלה. הדגש הוא על שיחות אחד על אחד, הכרה בהצלחות, ועידוד לקחת יוזמה. ניתן להאציל נושאים מוגדרים בביטחון.';
+            } else {
+                level = 'M4'; levelName = 'בשל / מיומן ובטוח';
+                style = 'S4'; styleName = 'האצלה מלאה';
+                badgeColor = 'bg-primary text-on-primary border border-secondary';
+                description = 'החשב פועל ברמת בשלות גבוהה — הן מקצועית והן פסיכולוגית. מומלץ מאוד לנהוג בסגנון האצלה מלאה (S4): להעניק לחשב אחריות עצמאית על תחומי שכר שלמים, לדלג על פיקוח שוטף ולהסתפק בדיווח תקופתי. שימוש בעובד זה כמדריך לעמיתים ייצור ערך ניהולי כפול: יפנה את ראש הצוות ויפתח את העובד לתפקיד עתידי בכיר יותר.';
+            }
+
+            // הצג תוצאות
+            document.getElementById('result-name').textContent = name;
+            document.getElementById('result-score').textContent = avg.toFixed(1);
+            document.getElementById('result-level').textContent = level;
+            document.getElementById('result-level-name').textContent = levelName;
+            document.getElementById('result-style').textContent = style;
+            document.getElementById('result-style-name').textContent = styleName;
+            document.getElementById('result-description').textContent = description;
+
+            document.getElementById('maturity-badge-container').innerHTML =
+                `<span class="maturity-badge text-lg px-6 py-2 ${badgeColor}">${level} — ${levelName}</span>`;
+
+            // פירוט קטגוריות
+            const barsEl = document.getElementById('category-bars');
+            barsEl.innerHTML = '';
+            for (const [cat, qs] of Object.entries(categories)) {
+                const catAvg = qs.reduce((s, q) => s + (answers[q] || 0), 0) / qs.length;
+                const pct = (catAvg / 5) * 100;
+                barsEl.innerHTML += `
+                    <div>
+                        <div class="flex justify-between mb-1">
+                            <span class="font-label-md text-on-surface">${cat}</span>
+                            <span class="font-label-md text-primary font-bold">${catAvg.toFixed(1)} / 5</span>
+                        </div>
+                        <div class="w-full h-3 bg-outline-variant rounded-full overflow-hidden">
+                            <div class="h-full bg-secondary rounded-full transition-all duration-700" style="width:${pct}%"></div>
+                        </div>
+                    </div>`;
+            }
+
+            document.getElementById('result-area').classList.remove('hidden');
+            setTimeout(() => document.getElementById('result-area').scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+        }
+
+        function resetForm() {
+            Object.keys(answers).forEach(k => delete answers[k]);
+            document.querySelectorAll('.rating-btn').forEach(b => b.classList.remove('selected'));
+            document.getElementById('employee-name').value = '';
+            document.getElementById('result-area').classList.add('hidden');
+            document.getElementById('eval-progress-bar').style.width = '0%';
+            document.getElementById('progress-count').textContent = '0 / 8';
+            updateProgress();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        /* ── אתחול ── */
         document.addEventListener('DOMContentLoaded', () => {
             showPage('home-section');
 
@@ -757,7 +1160,7 @@
                 card.addEventListener('mouseenter', () => {
                     card.classList.add('border-primary');
                     card.style.transform = 'translateY(-4px) scale(1.01)';
-                    card.style.boxShadow = '0 10px 25px -5px rgba(0, 0, 0, 0.1)';
+                    card.style.boxShadow = '0 10px 25px -5px rgba(0,0,0,0.1)';
                     card.style.transition = 'all 0.3s ease';
                 });
                 card.addEventListener('mouseleave', () => {
@@ -768,15 +1171,10 @@
             });
 
             document.querySelectorAll('.interactive-row').forEach(row => {
-                row.addEventListener('mouseenter', () => {
-                    row.style.transform = 'scale(1.005)';
-                    row.style.transition = 'transform 0.2s';
-                });
-                row.addEventListener('mouseleave', () => {
-                    row.style.transform = 'scale(1)';
-                });
+                row.addEventListener('mouseenter', () => { row.style.transform = 'scale(1.005)'; row.style.transition = 'transform 0.2s'; });
+                row.addEventListener('mouseleave', () => { row.style.transform = 'scale(1)'; });
             });
         });
     </script>
 </body>
-</html> 
+</html>
